@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FormFlow — Step 3: Review & Submit</title>
+<title>FormFlow — Step 2: Your Inquiry</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#f4f6fb;--white:#ffffff;--ink:#1a1d2e;--muted:#6b7080;
   --border:#e2e5ef;--accent:#4361ee;--accent-light:#eef1fd;--accent-dark:#2f4ad0;
-  --success:#22c97a;--success-bg:#edfaf4;--red:#e5484d;--radius:12px;
+  --red:#e5484d;--radius:12px;
 }
 html{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink)}
 body{min-height:100vh;display:flex;flex-direction:column}
@@ -23,75 +23,48 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 clam
 .nav-ghost:hover{background:var(--bg);color:var(--ink)}
 .nav-solid{background:var(--accent);color:#fff}
 .nav-solid:hover{background:var(--accent-dark)}
-
-/* PAGES */
-.pg{display:none}
-.pg.active{display:flex;flex-direction:column;flex:1;animation:rise 0.35s ease}
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-
 .form-shell{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:40px clamp(16px,4vw,32px) 60px}
 .form-container{width:100%;max-width:560px}
 .prog-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .prog-title{font-size:0.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em}
 .prog-count{font-size:0.8rem;color:var(--muted)}
 .prog-bar{height:4px;background:var(--border);border-radius:100px;margin-bottom:32px;overflow:hidden}
-.prog-fill{height:100%;background:var(--accent);border-radius:100px;width:100%}
+.prog-fill{height:100%;background:var(--accent);border-radius:100px;width:66%}
 .step-tabs{display:flex;gap:0;margin-bottom:28px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:6px}
-.step-tab{flex:1;padding:9px 6px;text-align:center;border-radius:8px;font-size:0.75rem;font-weight:600;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:3px;transition:all 0.2s}
+.step-tab{flex:1;padding:9px 6px;text-align:center;border-radius:8px;font-size:0.75rem;font-weight:600;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;transition:all 0.2s}
 .step-tab .tab-num{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.7rem;transition:all 0.25s}
-.step-tab.done .tab-num{background:var(--success);border-color:var(--success);color:#fff}
+.step-tab.done .tab-num{background:#22c97a;border-color:#22c97a;color:#fff}
 .step-tab.active{color:var(--accent);background:var(--accent-light)}
 .step-tab.active .tab-num{background:var(--accent);border-color:var(--accent);color:#fff}
 @media(max-width:440px){.step-tab .tab-label{display:none}}
 .card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:clamp(24px,5vw,40px);box-shadow:0 4px 28px rgba(67,97,238,0.06)}
 .card h2{font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:6px}
 .card-sub{font-size:0.87rem;color:var(--muted);margin-bottom:28px;line-height:1.6}
-
-/* REVIEW */
-.rv-section{margin-bottom:20px}
-.rv-section-title{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--muted);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-.rv-edit{font-size:0.75rem;color:var(--accent);background:none;border:none;font-family:inherit;font-weight:600;cursor:pointer;text-decoration:none}
-.rv-edit:hover{text-decoration:underline}
-.rv-grid{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:4px 0}
-.rv-row{display:flex;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border)}
-.rv-row:last-child{border-bottom:none}
-.rv-key{font-size:0.78rem;color:var(--muted);min-width:110px;flex-shrink:0;padding-top:1px}
-.rv-val{font-size:0.85rem;font-weight:500;word-break:break-word}
-
-.consent-wrap{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 18px;display:flex;gap:12px;align-items:flex-start;margin-bottom:6px;cursor:pointer;transition:border-color 0.2s}
-.consent-wrap:hover{border-color:var(--accent)}
-.consent-wrap input{width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--accent);cursor:pointer}
-.consent-text{font-size:0.82rem;line-height:1.6;color:var(--muted)}
-.consent-text strong{color:var(--ink)}
+.field{margin-bottom:18px}
+label{display:block;font-size:0.82rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+label .req{color:var(--accent);margin-left:2px}
+input,select,textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:0.9rem;font-family:inherit;color:var(--ink);background:var(--white);outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(67,97,238,0.1)}
+input.err,select.err,textarea.err{border-color:var(--red)}
+select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7080' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+textarea{resize:vertical;min-height:120px;line-height:1.6}
 .err-msg{font-size:0.75rem;color:var(--red);margin-top:5px;display:none}
 .err-msg.show{display:block}
-
+.hint{font-size:0.75rem;color:var(--muted);margin-top:5px}
+.radio-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+@media(max-width:400px){.radio-cards{grid-template-columns:1fr}}
+.radio-card{border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 16px;cursor:pointer;transition:all 0.2s;display:flex;align-items:flex-start;gap:10px}
+.radio-card:hover{border-color:var(--accent);background:var(--accent-light)}
+.radio-card.selected{border-color:var(--accent);background:var(--accent-light)}
+.radio-card input[type=radio]{display:none}
+.rc-icon{font-size:1.2rem}
+.rc-title{font-size:0.82rem;font-weight:600}
+.rc-sub{font-size:0.72rem;color:var(--muted);margin-top:1px}
 .form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:22px;border-top:1px solid var(--border)}
-.btn-back{background:transparent;border:1.5px solid var(--border);color:var(--muted);border-radius:10px;padding:11px 22px;font-size:0.88rem;font-weight:600;font-family:inherit;transition:all 0.2s;display:flex;align-items:center;gap:6px;text-decoration:none}
+.btn-back{background:transparent;border:1.5px solid var(--border);color:var(--muted);border-radius:10px;padding:11px 22px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s;display:flex;align-items:center;gap:6px;text-decoration:none}
 .btn-back:hover{border-color:var(--ink);color:var(--ink)}
-.btn-submit{background:var(--success);color:#fff;border:none;border-radius:10px;padding:11px 32px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
-.btn-submit:hover{background:#1aad6a;transform:translateY(-1px)}
-
-/* SUCCESS */
-.success-shell{flex:1;display:flex;align-items:center;justify-content:center;padding:40px clamp(16px,4vw,32px)}
-.success-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:clamp(32px,6vw,52px);max-width:500px;width:100%;text-align:center;box-shadow:0 4px 28px rgba(67,97,238,0.07)}
-.tick-ring{width:76px;height:76px;border-radius:50%;background:var(--success-bg);color:var(--success);font-size:2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;animation:pop 0.5s cubic-bezier(0.34,1.56,0.64,1)}
-@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-.success-card h2{font-size:1.8rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:10px}
-.success-card p{color:var(--muted);font-size:0.9rem;line-height:1.7;margin-bottom:24px}
-.ref-box{background:var(--accent-light);border-radius:var(--radius);padding:14px 20px;margin-bottom:28px;display:inline-block}
-.ref-label{font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em}
-.ref-num{font-size:1.3rem;font-weight:800;color:var(--accent);margin-top:3px}
-.next-steps{display:flex;gap:12px;margin-bottom:32px;text-align:left}
-.ns-item{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:14px}
-.ns-num{font-size:0.7rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
-.ns-text{font-size:0.78rem;color:var(--muted);line-height:1.5}
-.success-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-home{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:12px 24px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s;text-decoration:none;display:inline-block}
-.btn-home:hover{background:var(--accent-dark)}
-.btn-new{background:var(--accent-light);color:var(--accent);border:none;border-radius:10px;padding:12px 24px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.2s;text-decoration:none;display:inline-block}
-.btn-new:hover{background:#dce3fc}
-
+.btn-next{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:11px 28px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.btn-next:hover{background:var(--accent-dark);transform:translateY(-1px)}
 #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(70px);background:#1a1d2e;color:#fff;border-radius:100px;padding:10px 22px;font-size:0.82rem;font-weight:500;box-shadow:0 4px 20px rgba(0,0,0,0.2);transition:transform 0.3s;pointer-events:none;white-space:nowrap;z-index:999}
 #toast.show{transform:translateX(-50%) translateY(0)}
 footer{text-align:center;padding:18px;font-size:0.76rem;color:var(--muted);border-top:1px solid var(--border);background:var(--white)}
@@ -107,134 +80,138 @@ footer a{color:var(--accent);text-decoration:none}
   </div>
 </nav>
 
-<!-- REVIEW PAGE -->
-<div class="pg active" id="pg-review">
-  <div class="form-shell">
-    <div class="form-container">
-      <div class="prog-header">
-        <span class="prog-title">Contact Form</span>
-        <span class="prog-count">Step 3 of 3</span>
+<div class="form-shell">
+  <div class="form-container">
+    <div class="prog-header">
+      <span class="prog-title">Contact Form</span>
+      <span class="prog-count">Step 2 of 3</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill"></div></div>
+
+    <div class="step-tabs">
+      <div class="step-tab done"><div class="tab-num">✓</div><div class="tab-label">Personal</div></div>
+      <div class="step-tab active"><div class="tab-num">2</div><div class="tab-label">Inquiry</div></div>
+      <div class="step-tab"><div class="tab-num">3</div><div class="tab-label">Review</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Your Inquiry</h2>
+      <p class="card-sub">Tell us what you need help with.</p>
+
+      <div class="field">
+        <label for="subject">Subject <span class="req">*</span></label>
+        <input type="text" id="subject" name="subject" placeholder="e.g. Request a Demo"/>
+        <div class="err-msg" id="e-subject">Please enter a subject.</div>
       </div>
-      <div class="prog-bar"><div class="prog-fill"></div></div>
 
-      <div class="step-tabs">
-        <div class="step-tab done"><div class="tab-num">✓</div><div class="tab-label">Personal</div></div>
-        <div class="step-tab done"><div class="tab-num">✓</div><div class="tab-label">Inquiry</div></div>
-        <div class="step-tab active"><div class="tab-num">3</div><div class="tab-label">Review</div></div>
+      <div class="field">
+        <label>Inquiry Type <span class="req">*</span></label>
+        <div class="radio-cards">
+          <label class="radio-card selected" id="rc-general" onclick="selectType('General Inquiry',this)">
+            <input type="radio" name="inqtype" value="General Inquiry" checked/>
+            <div><div class="rc-icon">💬</div><div class="rc-title">General Inquiry</div><div class="rc-sub">Questions & info</div></div>
+          </label>
+          <label class="radio-card" id="rc-support" onclick="selectType('Support Request',this)">
+            <input type="radio" name="inqtype" value="Support Request"/>
+            <div><div class="rc-icon">🛠️</div><div class="rc-title">Support</div><div class="rc-sub">Technical help</div></div>
+          </label>
+          <label class="radio-card" id="rc-sales" onclick="selectType('Sales / Pricing',this)">
+            <input type="radio" name="inqtype" value="Sales / Pricing"/>
+            <div><div class="rc-icon">💼</div><div class="rc-title">Sales</div><div class="rc-sub">Pricing & plans</div></div>
+          </label>
+          <label class="radio-card" id="rc-partner" onclick="selectType('Partnership',this)">
+            <input type="radio" name="inqtype" value="Partnership"/>
+            <div><div class="rc-icon">🤝</div><div class="rc-title">Partnership</div><div class="rc-sub">Collaborate with us</div></div>
+          </label>
+        </div>
       </div>
 
-      <div class="card">
-        <h2>Review & Submit</h2>
-        <p class="card-sub">Check your details before sending. Click Edit to make changes.</p>
+      <div class="field">
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority">
+          <option value="Normal">Normal</option>
+          <option value="High">High — Need response ASAP</option>
+          <option value="Low">Low — No rush</option>
+        </select>
+      </div>
 
-        <div class="rv-section">
-          <div class="rv-section-title">Personal Details <a class="rv-edit" href="step1.html">Edit</a></div>
-          <div class="rv-grid">
-            <div class="rv-row"><div class="rv-key">Full Name</div><div class="rv-val" id="rv-name">—</div></div>
-            <div class="rv-row"><div class="rv-key">Email</div><div class="rv-val" id="rv-email">—</div></div>
-            <div class="rv-row"><div class="rv-key">Phone</div><div class="rv-val" id="rv-phone">—</div></div>
-            <div class="rv-row"><div class="rv-key">Company</div><div class="rv-val" id="rv-company">—</div></div>
-          </div>
-        </div>
+      <div class="field">
+        <label for="message">Message <span class="req">*</span></label>
+        <textarea id="message" name="message" maxlength="1000" oninput="countMsg()" placeholder="Write your message here…"></textarea>
+        <div class="hint" id="msg-hint">0 / 1000 characters</div>
+        <div class="err-msg" id="e-message">Please write a message (min 20 characters).</div>
+      </div>
 
-        <div class="rv-section">
-          <div class="rv-section-title">Inquiry <a class="rv-edit" href="step2.html">Edit</a></div>
-          <div class="rv-grid">
-            <div class="rv-row"><div class="rv-key">Subject</div><div class="rv-val" id="rv-subject">—</div></div>
-            <div class="rv-row"><div class="rv-key">Type</div><div class="rv-val" id="rv-type">—</div></div>
-            <div class="rv-row"><div class="rv-key">Priority</div><div class="rv-val" id="rv-priority">—</div></div>
-            <div class="rv-row"><div class="rv-key">Message</div><div class="rv-val" id="rv-message">—</div></div>
-          </div>
-        </div>
-
-        <label class="consent-wrap" for="consent">
-          <input type="checkbox" id="consent"/>
-          <div class="consent-text">I confirm all information provided is accurate. I agree to the <strong>Privacy Policy</strong> and consent to being contacted regarding my inquiry.</div>
-        </label>
-        <div class="err-msg" id="e-consent">Please accept to continue.</div>
-
-        <div class="form-nav">
-          <a class="btn-back" href="step2.html">← Back</a>
-          <button class="btn-submit" onclick="submitForm()">✓ Send Message</button>
-        </div>
+      <div class="form-nav">
+        <a class="btn-back" href="step1.html">← Back</a>
+        <button class="btn-next" onclick="goNext()">Review →</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SUCCESS PAGE -->
-<div class="pg" id="pg-success">
-  <div class="success-shell">
-    <div class="success-card">
-      <div class="tick-ring">✓</div>
-      <h2>Message Sent!</h2>
-      <p>Thanks for reaching out! We've received your message and will get back to <strong id="s-email"></strong> within 24 hours.</p>
-      <div class="ref-box">
-        <div class="ref-label">Reference Number</div>
-        <div class="ref-num" id="s-ref">#FF-000000</div>
-      </div>
-      <div class="next-steps">
-        <div class="ns-item"><div class="ns-num">Next</div><div class="ns-text">Check your inbox for a confirmation email</div></div>
-        <div class="ns-item"><div class="ns-num">Then</div><div class="ns-text">Our team reviews & responds within 24 hrs</div></div>
-        <div class="ns-item"><div class="ns-num">Finally</div><div class="ns-text">We'll resolve your inquiry completely</div></div>
-      </div>
-      <div class="success-btns">
-        <a class="btn-home" href="index.html">← Back to Home</a>
-        <a class="btn-new" href="step1.html" onclick="clearSession()">Send Another</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="toast">⚠ Please accept the declaration.</div>
+<div id="toast">⚠ Please fix the highlighted fields.</div>
 <footer>© 2025 FormFlow · All rights reserved · <a href="#">Privacy Policy</a></footer>
 
 <script>
   window.onload = function() {
-    const get = k => sessionStorage.getItem(k) || '—';
-    const phone = (get('dialcode') !== '—' && get('phone') !== '—') ? get('dialcode') + ' ' + get('phone') : get('phone');
-    document.getElementById('rv-name').textContent    = [get('fname'), get('lname')].filter(v=>v!=='—').join(' ') || '—';
-    document.getElementById('rv-email').textContent   = get('email');
-    document.getElementById('rv-phone').textContent   = phone !== '—' ? phone : '—';
-    document.getElementById('rv-company').textContent = get('company');
-    document.getElementById('rv-subject').textContent = get('subject');
-    document.getElementById('rv-type').textContent    = get('inqtype');
-    document.getElementById('rv-priority').textContent= get('priority');
-    const msg = get('message');
-    document.getElementById('rv-message').textContent = msg.length > 100 ? msg.slice(0,100)+'…' : msg;
+    ['subject','priority','message'].forEach(k => {
+      const saved = sessionStorage.getItem(k);
+      if (saved && document.getElementById(k)) document.getElementById(k).value = saved;
+    });
+    const savedType = sessionStorage.getItem('inqtype');
+    if (savedType) {
+      document.querySelectorAll('.radio-card').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('input[name=inqtype]').forEach(r => {
+        if (r.value === savedType) { r.checked = true; r.closest('.radio-card').classList.add('selected'); }
+      });
+    }
+    countMsg();
   };
 
-  function submitForm() {
-    const consent = document.getElementById('consent');
-    if (!consent.checked) {
-      document.getElementById('e-consent').classList.add('show');
+  function selectType(val, el) {
+    document.querySelectorAll('.radio-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input').checked = true;
+  }
+
+  function countMsg() {
+    const len = document.getElementById('message').value.length;
+    document.getElementById('msg-hint').textContent = len + ' / 1000 characters';
+  }
+
+  function goNext() {
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+    let bad = false;
+
+    function setErr(id, errId, condition) {
+      document.getElementById(id).classList.toggle('err', condition);
+      document.getElementById(errId).classList.toggle('show', condition);
+      if (condition) bad = true;
+    }
+
+    setErr('subject','e-subject', !subject);
+    setErr('message','e-message', message.length < 20);
+
+    if (bad) {
       const t = document.getElementById('toast');
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 3000);
       return;
     }
-    document.getElementById('e-consent').classList.remove('show');
 
-    // GTM dataLayer
+    const selType = document.querySelector('input[name=inqtype]:checked');
+    sessionStorage.setItem('subject', subject);
+    sessionStorage.setItem('priority', document.getElementById('priority').value);
+    sessionStorage.setItem('message', message);
+    sessionStorage.setItem('inqtype', selType ? selType.value : 'General Inquiry');
+
     window.dataLayer = window.dataLayer || [];
-    dataLayer.push({
-      event: 'form_submit',
-      form_name: 'contact_form',
-      inquiry_type: sessionStorage.getItem('inqtype'),
-      priority: sessionStorage.getItem('priority')
-    });
+    dataLayer.push({ event: 'form_step_complete', step_number: 2, step_name: 'Inquiry' });
 
-    // Show success
-    const ref = '#FF-' + Math.floor(100000 + Math.random()*900000);
-    document.getElementById('s-email').textContent = sessionStorage.getItem('email') || 'you';
-    document.getElementById('s-ref').textContent = ref;
-
-    document.getElementById('pg-review').classList.remove('active');
-    document.getElementById('pg-success').classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
+    window.location.href = 'step3.html';
   }
-
-  function clearSession() { sessionStorage.clear(); }
 </script>
 </body>
 </html>
